@@ -6,7 +6,7 @@ export default class Api {
   }
 
   getData() {
-    return fetch('../apartments.json')
+    return fetch('../data/apartments.json')
       .then(this._checkResponse)
   }
 
