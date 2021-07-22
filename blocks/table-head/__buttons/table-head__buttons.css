@@ -1,0 +1,6 @@
+.table-head__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 8px;
+}

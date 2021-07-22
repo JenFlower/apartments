@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Квартиры</title>
+  <link href="./node_modules/nouislider/dist/nouislider.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="pages/index.css">
+</head>
+<body>
+  <div class="page">
+    <section class="main">
+      <div class="result">
+        <h1 class="title">Квартиры</h1>
+
+
+        <div class="table">
+          <ul class="table-head">
+            <!-- <ul class="table-head_first-block"> -->
+              <li class="table-head__item">
+                <p class="table-head__name">Планировка</p>
+              </li>
+              <li class="table-head__item">
+                <p class="table-head__name">Квартира</p>
+              </li>
+            <!-- </ul> -->
+            <!-- <ul class="table-head_second-block"> -->
+              <li class="table-head__item">
+                <p class="table-head__name">S, м<sup>2</sup></p>
+                <div class="table-head__buttons">
+                  <div class="table-head__button-image"></div>
+                  <div class="table-head__button-image"></div>
+                </div>
+              </li>
+              <li class="table-head__item">
+                <p class="table-head__name">Этаж</p>
+                <div class="table-head__buttons">
+                  <div class="table-head__button-image"></div>
+                  <div class="table-head__button-image"></div>
+                </div>
+              </li>
+              <li class="table-head__item">
+                <p class="table-head__name">Цена, &#8381;</p>
+                <div class="table-head__buttons">
+                  <div class="table-head__button-image"></div>
+                  <div class="table-head__button-image"></div>
+                </div>
+              </li>
+            <!-- </ul> -->
+          </ul>
+          <div class="apartment-row">
+            <div class="apartment-row__image"></div>
+
+            <!-- <div class="test-grid-1"> -->
+              <p class="apartment-row__rooms">3-комнатная №104</p>
+              <!-- <div class="test-grid-2"> -->
+                <p class="apartment-row__area">63,1</p>
+                <p class="apartment-row__floor">1 <span class="apartment-row__floor_opacity">из 17</span></p>
+                <p class="apartment-row__price">6 630 500</p>
+              <!-- </div> -->
+            <!-- </div> -->
+
+          </div>
+          <div class="apartment-row">
+            <div class="apartment-row__image"></div>
+            <p class="apartment-row__rooms">3-комнатная №104</p>
+            <p class="apartment-row__area">63,1</p>
+            <p class="apartment-row__floor">1 <span class="apartment-row__floor_opacity">из 17</span></p>
+            <p class="apartment-row__price">6 630 500</p>
+          </div>
+          <div class="apartment-row">
+            <div class="apartment-row__image"></div>
+            <p class="apartment-row__rooms">3-комнатная №104</p>
+            <p class="apartment-row__area">63,1</p>
+            <p class="apartment-row__floor">1 <span class="apartment-row__floor_opacity">из 17</span></p>
+            <p class="apartment-row__price">6 630 500</p>
+          </div>
+          <div class="apartment-row">
+            <div class="apartment-row__image"></div>
+            <p class="apartment-row__rooms">3-комнатная №104</p>
+            <p class="apartment-row__area">63,1</p>
+            <p class="apartment-row__floor">1 <span class="apartment-row__floor_opacity">из 17</span></p>
+            <p class="apartment-row__price">6 630 500</p>
+          </div>
+        </div>
+        <button type="button" class="result__load">Загрузить еще</button>
+      </div>
+
+      <div class="filter">
+        <div class="filter__room-buttons">
+          <button class="filter__room-button">1к</button>
+          <button class="filter__room-button">2к</button>
+          <button class="filter__room-button">3к</button>
+          <button class="filter__room-button">4к</button>
+        </div>
+
+        <div class="filter__range-block">
+          <h2 class="filter__title">Стоимость квартиры, &#8381;</h2>
+          <div class="filter__range-title">
+            <p class="filter__range-title_from" id="range-from-price"><span class="apartment-row__floor_opacity">от</span> 5 500 000</p>
+            <p class="filter__range-title_to" id="range-to-price"><span class="apartment-row__floor_opacity">до</span> 18 900 000</p>
+          </div>
+          <div class="filter__range" id="slider-price"></div>
+        </div>
+
+        <div class="filter__range-block">
+          <h2 class="filter__title">Площадь, м<sup>2</sup></h2>
+          <div class="filter__range-title">
+            <p class="filter__range-title_from"><span class="apartment-row__floor_opacity">от</span> 33</p>
+            <p class="filter__range-title_to"><span class="apartment-row__floor_opacity">до</span> 123</p>
+          </div>
+          <div class="filter__range" id="slider-area"></div>
+        </div>
+        <div class="reset">
+          <p class="reset__title">Сбросить параметры</p>
+          <button type="button" class="reset__button"></button>
+        </div>
+      </div>
+
+
+    </section>
+    <button type="button" class="button-up"></button>
+  </div>
+
+  <script src="./node_modules/nouislider/dist/nouislider.js"></script>
+  <script src="./pages/index.js"></script>
+</body>
+</html>

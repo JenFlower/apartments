@@ -1,0 +1,8 @@
+.filter {
+  background: linear-gradient(#AEE4B2, #95D0A1 );
+  max-width: 400px;
+  border-radius: 10px;
+  padding: 40px;
+  max-height: 372px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,11 @@
+.table-head_first-block {
+  outline: 1px green solid;
+  list-style: none;
+  padding: 0;
+  display: grid;
+  /* max-width: ; */
+  grid-template-columns: 1fr 2fr;
+  /* justify-content: space-between; */
+  /* flex-direction: row; */
+  /* grid */
+}

@@ -1,0 +1,14 @@
+.reset__button {
+  /* outline: 1px red solid; */
+  background: transparent;
+  border: none;
+  background-image: url('../../../images/reset.svg');
+  background-repeat: no-repeat;
+  height: 8px;
+  width: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+.reset__button:hover {
+  background-image: url('../../../images/reset-green.svg');
+}

@@ -1,0 +1,19 @@
+.main {
+  /* outline: 1px red solid; */
+  border-radius: 30%;
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  margin: 96px 80px;
+  display: grid;
+  grid-template-columns: 3fr 400px;
+  gap: 0 80px;
+  /* justify-content: space-between; */
+
+}
+
+/* @media screen and (max-width: 1980px) {
+  .main {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+} */

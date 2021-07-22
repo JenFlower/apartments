@@ -1,0 +1,48 @@
+@import url(../vendor/normalize.css);
+@import url(../fonts/inter.css);
+@import url(../blocks/page/page.css);
+
+@import url(../blocks/title/title.css);
+@import url(../blocks/main/main.css);
+@import url(../blocks/button-up/button-up.css);
+
+
+/* @import url(../blocks/test-grid-1/test-grid-1.css);
+@import url(../blocks/test-grid-2/test-grid-2.css); */
+@import url(../blocks/result/__load/result__load.css);
+
+
+/* table-head */
+@import url(../blocks/table-head/_first-block/table-head_first-block.css);
+@import url(../blocks/table-head/_second-block/table-head_second-block.css);
+@import url(../blocks/table-head/__buttons/table-head__buttons.css);
+@import url(../blocks/table-head/table-head.css);
+@import url(../blocks/table-head/__item/table-head__item.css);
+@import url(../blocks/table-head/__name/table-head__name.css);
+@import url(../blocks/table-head/__button-image/table-head__button-image.css);
+
+/* apartment-row */
+@import url(../blocks/apartment-row/apartment-row.css);
+@import url(../blocks/apartment-row/__image/apartment-row__image.css);
+@import url(../blocks/apartment-row/__floor/_opacity/apartment-row__floor_opacity.css);
+@import url(../blocks/apartment-row/__price/apartment-row__price.css);
+@import url(../blocks/apartment-row/__floor/apartment-row__floor.css);
+@import url(../blocks/apartment-row/__area/apartment-row__area.css);
+@import url(../blocks/apartment-row/__rooms/apartment-row__rooms.css);
+
+
+/* filter */
+@import url(../blocks/filter/filter.css);
+@import url(../blocks/filter/__room-button/filter__room-button.css);
+@import url(../blocks/filter/__room-buttons/filter__room-buttons.css);
+@import url(../blocks/filter/__title/filter__title.css);
+@import url(../blocks/filter/__range-title/filter__range-title.css);
+@import url(../blocks/filter/__range-title/_to/filter__range-title_to.css);
+@import url(../blocks/filter/__range-title/_from/filter__range-title_from.css);
+@import url(../blocks/filter/__range-block/filter__range-block.css);
+@import url(../blocks/filter/__range/filter__range.css);
+
+/* reset */
+@import url(../blocks/reset/reset.css);
+@import url(../blocks/reset/__title/reset__title.css);
+@import url(../blocks/reset/__button/reset__button.css);

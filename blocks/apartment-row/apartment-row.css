@@ -1,0 +1,17 @@
+.apartment-row {
+  /* outline: 1px blue solid; */
+  display: grid;
+  grid-template-columns: 100px 2fr repeat(3, 1fr);
+  /* grid-template-columns: repeat(2, 1fr); */
+  min-height: 120px;
+  border-top: 1px rgba(0, 0, 0, 0.1) solid;
+
+  font-size: 16px;
+  color: #0B1739;
+  line-height: 25px;
+  /* margin: 0; */
+  padding-top: 16px;
+}
+.apartment-row:last-child {
+  border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+}

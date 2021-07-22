@@ -1,0 +1,7 @@
+.reset {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-top: 5px;
+  padding-bottom: 7px;
+}

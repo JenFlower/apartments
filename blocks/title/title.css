@@ -1,0 +1,8 @@
+.title {
+  /* outline: 1px yellow solid; */
+  font-family: PTRootUIWebBold, Arial, Helvetica, sans-serif;
+  font-size: 54px;
+  line-height: 55px;
+  margin: 0;
+  padding-bottom: 48px;
+}

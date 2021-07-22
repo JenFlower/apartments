@@ -1,0 +1,7 @@
+.filter__range-title {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* outline: 1px red solid; */
+  padding-top: 8px;
+  padding-bottom: 12px;
+}

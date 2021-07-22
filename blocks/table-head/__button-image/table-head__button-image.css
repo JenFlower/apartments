@@ -1,0 +1,28 @@
+.table-head__button-image:first-child {
+  margin: 5px 0 1px;
+  height: 4px;
+  background-image: url('../../../images/arrow-up.svg');
+  background-repeat: no-repeat;
+  width: 8px;
+  /* transform: rotate(180deg); */
+  /* fill: black; */
+}
+.table-head__button-image:last-child {
+  margin: 1px 0 5px;
+  height: 4px;
+  background-repeat: no-repeat;
+  background-image: url('../../../images/arrow-down.svg');
+}
+
+.table-head__button-image:first-child:hover {
+  background-image: url('../../../images/arrow-up-green.svg');
+
+  /* margin: 1px 0 5px; */
+  /* color: green; */
+  /* fill: #3EB57C; */
+}
+.table-head__button-image:last-child:hover {
+  background-image: url('../../../images/arrow-down-green.svg');
+  /* transform: rotate(180deg); */
+  /* background-color: green; */
+}
