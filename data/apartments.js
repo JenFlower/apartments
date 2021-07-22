@@ -1,4 +1,4 @@
-[
+const apartmentsArray = [
   {
     "id": 1,
     "image": "images/apartment.svg",
