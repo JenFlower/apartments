@@ -32,7 +32,7 @@ const createSlider = (name, from, to, min, max) => {
 createSlider(sliderPrice, 9_000_000, 15_000_000, 5_500_000, 18_900_000)
 createSlider(sliderArea, 57, 97, 33, 123)
 
-const getData = (from, to) => {
+const getDataApartments = (from, to) => {
   api.getData().then(res => {
     const arr= res.slice(from, to)  // первые 5 элементов
     arr.forEach(item => {
@@ -46,7 +46,7 @@ const getData = (from, to) => {
   })
 }
 // загрузка первых 5 элементов
-getData(0, 5)
+getDataApartments(0, 5)
 
 function addApartment(item) {
   return apartmentContent.append(item);
@@ -76,7 +76,7 @@ const createApartment = (item) => {
 
 // обработчик кнопки "Загрузить еще"
 btnResultLoad.addEventListener('click', () => {
-  getData(currentApartment, currentApartment + 20)
+  getDataApartments(currentApartment, currentApartment + 20)
 })
 
 
