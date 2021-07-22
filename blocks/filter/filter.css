@@ -6,3 +6,9 @@
   max-height: 372px;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 1200px) {
+  .filter {
+    max-width: 318px;
+  }
+}

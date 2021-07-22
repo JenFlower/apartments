@@ -1,3 +1,7 @@
 .apartment-row__area {
+  font-family: PTRootUIWebBold, Arial, Helvetica, sans-serif;
   margin: 0;
+  grid-area: area;
+  /* outline: 1px red solid; */
+
 }

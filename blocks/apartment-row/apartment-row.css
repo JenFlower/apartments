@@ -1,17 +1,34 @@
 .apartment-row {
-  /* outline: 1px blue solid; */
   display: grid;
   grid-template-columns: 100px 2fr repeat(3, 1fr);
-  /* grid-template-columns: repeat(2, 1fr); */
   min-height: 120px;
   border-top: 1px rgba(0, 0, 0, 0.1) solid;
-
-  font-size: 16px;
   color: #0B1739;
-  line-height: 25px;
-  /* margin: 0; */
+  font-size: 16px;
+  line-height: 24px;
   padding-top: 16px;
+  grid-template-areas:
+      "plan room area floor price";
 }
 .apartment-row:last-child {
   border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+}
+
+@media screen and (max-width: 1200px) {
+  .apartment-row {
+    /* outline: 1px red solid; */
+    font-size: 14px;
+    min-height: 112px;
+    box-sizing: border-box;
+    grid-template-columns: repeat(2, auto) repeat(2, 1fr) max-content;
+    gap: 16px 20px;
+    border: 1px rgba(0, 0, 0, 0.1) solid;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    grid-template-areas:
+      "room room room plan"
+      "area floor price plan";
+    grid-template-rows: repeat(3, 20px);
+    padding: 16px 24px;
+  }
 }

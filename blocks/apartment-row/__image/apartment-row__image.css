@@ -2,6 +2,20 @@
   background-image: url('../../../images/apartment.svg');
   background-repeat: no-repeat;
   margin: 7px;
-  /* width: 80px;
-  height: 80px; */
+  grid-area: plan;
+  width: 80px;
+  height: 80px;
+  background-position: center;
+  /* align-self: center; */
+
+}
+
+@media screen and (max-width: 1200px) {
+  .apartment-row__image{
+    /* outline: 1px red solid; */
+    grid-column-start: 5;
+    grid-column-end: 6;
+    padding: 16px 24px;
+    box-sizing: border-box;
+  }
 }

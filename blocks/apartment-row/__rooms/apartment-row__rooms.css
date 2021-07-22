@@ -1,4 +1,12 @@
 .apartment-row__rooms {
   font-family: PTRootUIWebBold, Arial, Helvetica, sans-serif;
   margin: 0;
+  grid-area: room;
+}
+
+@media screen and (max-width: 1200px) {
+  .apartment-row__rooms{
+    /* outline: 1px red solid; */
+    grid-column-end: 5;
+  }
 }

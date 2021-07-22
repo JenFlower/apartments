@@ -1,3 +1,13 @@
 .apartment-row__price {
+  font-family: PTRootUIWebBold, Arial, Helvetica, sans-serif;
   margin: 0;
+  grid-area: price;
+}
+
+@media screen and (max-width: 1200px) {
+  .apartment-row__price{
+    /* outline: 1px red solid; */
+    grid-column-start: 3;
+    grid-column-end: 5;
+  }
 }

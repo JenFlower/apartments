@@ -5,7 +5,9 @@
 @import url(../blocks/title/title.css);
 @import url(../blocks/main/main.css);
 @import url(../blocks/button-up/button-up.css);
-
+@import url(../blocks/area/area.css);
+@import url(../blocks/price/price.css);
+@import url(../blocks/floor/floor.css);
 
 /* @import url(../blocks/test-grid-1/test-grid-1.css);
 @import url(../blocks/test-grid-2/test-grid-2.css); */
