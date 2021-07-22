@@ -10,6 +10,9 @@ let currentApartment = 0
 
 const api = new Api()
 
+console.log('index')
+
+
 const createSlider = (name, from, to, min, max) => {
   noUiSlider.create(name, {
     start: [from, to],
