@@ -4,3 +4,12 @@
   padding-top: 8px;
   padding-bottom: 12px;
 }
+
+@media screen and (max-width: 1200px) {
+  .filter__range-title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+

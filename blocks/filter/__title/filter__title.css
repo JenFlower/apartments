@@ -3,3 +3,9 @@
   line-height: 20px;
   margin: 0;
 }
+@media screen and (max-width: 1200px) {
+  .filter__title {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}

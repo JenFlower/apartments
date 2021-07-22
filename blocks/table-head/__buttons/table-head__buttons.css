@@ -4,3 +4,9 @@
   justify-content: center;
   margin-left: 8px;
 }
+
+@media screen and (max-width: 1200px) {
+  .table-head__buttons {
+    /* justify-content: space-around; */
+  }
+}

@@ -1,0 +1,9 @@
+.table-head__item_hidden {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .table-head__item_hidden {
+    display: inline;
+  }
+}

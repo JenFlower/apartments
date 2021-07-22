@@ -10,5 +10,7 @@
 @media screen and (max-width: 1200px) {
   .filter {
     max-width: 318px;
+    max-height: 318px;
+    padding: 20px 19px;
   }
 }

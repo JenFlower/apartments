@@ -4,8 +4,6 @@
   background-image: url('../../../images/arrow-up.svg');
   background-repeat: no-repeat;
   width: 8px;
-  /* transform: rotate(180deg); */
-  /* fill: black; */
 }
 .table-head__button-image:last-child {
   margin: 1px 0 5px;
@@ -16,13 +14,16 @@
 
 .table-head__button-image:first-child:hover {
   background-image: url('../../../images/arrow-up-green.svg');
-
-  /* margin: 1px 0 5px; */
-  /* color: green; */
-  /* fill: #3EB57C; */
 }
 .table-head__button-image:last-child:hover {
   background-image: url('../../../images/arrow-down-green.svg');
-  /* transform: rotate(180deg); */
-  /* background-color: green; */
 }
+
+/* @media screen and (max-width: 1280px) {
+  .table-head__button-image:first-child {
+    margin-top: 0;
+  }
+  .table-head__button-image:last-child {
+    margin-bottom: 0;
+  }
+} */

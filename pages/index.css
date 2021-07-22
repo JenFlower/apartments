@@ -9,19 +9,17 @@
 @import url(../blocks/price/price.css);
 @import url(../blocks/floor/floor.css);
 
-/* @import url(../blocks/test-grid-1/test-grid-1.css);
-@import url(../blocks/test-grid-2/test-grid-2.css); */
 @import url(../blocks/result/__load/result__load.css);
 
 
 /* table-head */
-@import url(../blocks/table-head/_first-block/table-head_first-block.css);
-@import url(../blocks/table-head/_second-block/table-head_second-block.css);
 @import url(../blocks/table-head/__buttons/table-head__buttons.css);
 @import url(../blocks/table-head/table-head.css);
 @import url(../blocks/table-head/__item/table-head__item.css);
 @import url(../blocks/table-head/__name/table-head__name.css);
 @import url(../blocks/table-head/__button-image/table-head__button-image.css);
+@import url(../blocks/table-head/__item/_hidden/table-head__item_hidden.css);
+@import url(../blocks/table-head/__item/_inline/table-head__item_hidden.css);
 
 /* apartment-row */
 @import url(../blocks/apartment-row/apartment-row.css);

@@ -1,6 +1,4 @@
 .table-head__item {
-  /* outline: 1px green solid; */
-  /* margin: 0; */
   display: flex;
-  /* justify-content: ; */
+  align-items: center;
 }

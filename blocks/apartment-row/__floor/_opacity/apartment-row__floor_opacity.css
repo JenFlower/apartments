@@ -1,10 +1,6 @@
 .apartment-row__floor_opacity {
-  /* font-family: PTRootUIWebBold, Arial, Helvetica, sans-serif; */
   display: inline-block;
   font-size: 16px;
   line-height: 24px;
-  /* word-spacing: 16px; */
   opacity: .5;
-  /* margin: 0;
-  padding-bottom: 48px; */
 }
