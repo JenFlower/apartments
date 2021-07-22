@@ -13,6 +13,7 @@
     <section class="main">
       <div class="result">
         <h1 class="title">Квартиры</h1>
+
         <div class="table">
           <ul class="table-head">
               <li class="table-head__item table-head__item_inline">
@@ -53,7 +54,8 @@
                 </div>
               </li>
           </ul>
-          <div class="apartment-row">
+          <div class="apartment-content"></div>
+          <!-- <div class="apartment-row">
             <div class="apartment-row__image"></div>
             <p class="apartment-row__rooms">3-комнатная №104</p>
             <p class="apartment-row__area">63,1 <span class="area">м<sup>2</sup></span></p>
@@ -78,9 +80,13 @@
             <div class="apartment-row__image"></div>
             <p class="apartment-row__rooms">3-комнатная №104</p>
             <p class="apartment-row__area">63,1 <span class="area">м<sup>2</sup></span></p>
-            <p class="apartment-row__floor">1 <span class="apartment-row__floor_opacity">из 17 <span class="floor">этаж</span></span></p>
+            <p class="apartment-row__floor">1
+              <span class="apartment-row__floor_opacity">из 17
+                <span class="floor">этаж</span>
+              </span>
+            </p>
             <p class="apartment-row__price">6 630 500 <span class="price">&#8381;</span></p>
-          </div>
+          </div> -->
         </div>
         <button type="button" class="result__load">Загрузить еще</button>
       </div>
@@ -121,7 +127,30 @@
     <button type="button" class="button-up"></button>
   </div>
 
+  <template id="apartment-template">
+    <div class="apartment-row">
+      <div class="apartment-row__image"></div>
+      <p class="apartment-row__rooms"></p>
+      <p class="apartment-row__area">
+        <span class="area-current"></span>
+        <span class="area">м<sup>2</sup></span>
+      </p>
+      <p class="apartment-row__floor">
+        <span class="apartment-row__current-floor"></span>
+        <span class="apartment-row__floor_opacity">из
+          <!-- <span> -->
+          <span class="apartment-row__total-floor"></span>
+          <span class="floor">этаж</span>
+        </span>
+      </p>
+      <p class="apartment-row__price">
+        <span class="price-current"></span>
+        <span class="price">&#8381;</span>
+      </p>
+    </div>
+  </template>
+
   <script src="./node_modules/nouislider/dist/nouislider.js"></script>
-  <script src="./pages/index.js"></script>
+  <script type="module" src="./pages/index.js"></script>
 </body>
 </html>

@@ -1,7 +1,8 @@
 .apartment-row__image {
-  background-image: url('../../../images/apartment.svg');
+  /* background-image: url('../../../images/apartment.svg'); */
   background-repeat: no-repeat;
   margin: 7px;
+  margin-top: 0;
   grid-area: plan;
   width: 80px;
   height: 80px;

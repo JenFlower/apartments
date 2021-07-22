@@ -1,6 +1,6 @@
 .filter {
   background: linear-gradient(#AEE4B2, #95D0A1 );
-  max-width: 400px;
+  /* max-width: 400px; */
   border-radius: 10px;
   padding: 40px;
   max-height: 372px;
@@ -9,7 +9,7 @@
 
 @media screen and (max-width: 1200px) {
   .filter {
-    max-width: 318px;
+    /* max-width: 318px; */
     max-height: 318px;
     padding: 20px 19px;
   }

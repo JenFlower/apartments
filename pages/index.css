@@ -10,6 +10,7 @@
 @import url(../blocks/floor/floor.css);
 
 @import url(../blocks/result/__load/result__load.css);
+@import url(../blocks/result/__load/_disabled/result__load_disabled.css);
 
 
 /* table-head */
