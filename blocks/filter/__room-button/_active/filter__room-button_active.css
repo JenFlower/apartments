@@ -1,0 +1,7 @@
+.filter__room-button_active {
+  background-color: #3EB57C;
+  color: #FFF;
+  transition: all .5s;
+  box-shadow: 0 1px 28px rgba(0,0,0,0.25), 0 7px 7px rgba(0,0,0,0.22);
+
+}

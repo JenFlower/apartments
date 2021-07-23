@@ -1,5 +1,4 @@
 export default class Api {
-  // constructor(){}
 
   _checkResponse(res) {
     return res ? res.json() : Promise.reject(`Error: ${res.status}`)
@@ -9,5 +8,4 @@ export default class Api {
     return fetch('apartments.json')
       .then(this._checkResponse)
   }
-
 }
