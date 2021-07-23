@@ -5,13 +5,20 @@ const sliderArea = document.querySelector('#slider-area')
 // const sliderTheme = document.querySelector('filter__range')
 const apartmentContent = document.querySelector('.apartment-content')
 const btnResultLoad = document.querySelector('.result__load')
+const buttonUp = document.querySelector('.button-up')
 
 let currentApartment = 0
 
 const api = new Api()
 
-console.log('index')
+window.addEventListener('scroll',() => {
+  // window.scrollY > 500 ? buttonUp.classList.remove('hidden') : buttonUp.classList.add('hidden')
 
+  if(window.scrollY > 500) {
+    buttonUp.classList.remove('hidden')
+  }
+}
+)
 
 const createSlider = (name, from, to, min, max) => {
   noUiSlider.create(name, {
@@ -80,4 +87,10 @@ btnResultLoad.addEventListener('click', () => {
 })
 
 
-
+// прокрутка страницы
+buttonUp.addEventListener('click', () => {
+  window.scroll({
+    top: 0,
+    behavior: 'smooth'
+  });
+})

@@ -6,10 +6,8 @@ export default class Api {
   }
 
   getData() {
-    return fetch('../data/apartments.js')
+    return fetch('../data/apartments.json')
       .then(this._checkResponse)
-    // return fetch('https://jenflower.github.io/apartments/data/apartments.json')
-    //   .then(this._checkResponse)
   }
 
 }
