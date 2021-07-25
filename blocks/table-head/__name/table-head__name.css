@@ -1,3 +1,7 @@
 .table-head__name {
   margin: 0;
 }
+.table-head__name:hover {
+  color: #3EB57C;
+  cursor: pointer;
+}

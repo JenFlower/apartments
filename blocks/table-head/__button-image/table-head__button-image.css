@@ -19,11 +19,3 @@
   background-image: url('../../../images/arrow-down-green.svg');
 }
 
-/* @media screen and (max-width: 1280px) {
-  .table-head__button-image:first-child {
-    margin-top: 0;
-  }
-  .table-head__button-image:last-child {
-    margin-bottom: 0;
-  }
-} */

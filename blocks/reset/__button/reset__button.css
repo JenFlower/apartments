@@ -9,6 +9,6 @@
   cursor: pointer;
   padding: 0;
 }
-.reset__button:hover {
+/* .reset__button:hover {
   background-image: url('../../../images/reset-green.svg');
-}
+} */
