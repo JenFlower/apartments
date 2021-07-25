@@ -2,6 +2,9 @@
 import Api from '../scripts/Api.js'
 import * as constants from '../scripts/constants.js'
 
+// изначально ни одна кнопка фильтра по комнатам не нажата
+let isButtonActivate = false
+
 const api = new Api()
 
 window.addEventListener('scroll', () => {
@@ -34,71 +37,71 @@ createSlider(constants.sliderArea, 57, 97, 33, 123)
 updateTextSlider(constants.sliderPrice, constants.priceFrom, constants.priceTo)
 updateTextSlider(constants.sliderArea, constants.areaFrom, constants.areaTo)
 
+
 const filterResultData = (res, filterData) => {
-  return res.filter(x => filterData.rooms.includes(x.rooms) &&
+  if(filterData.rooms.length === 0) {
+    return res.filter(x => x.price >= filterData.priceFrom &&
+      x.price <= filterData.priceTo &&
+      x.area >= filterData.areaFrom &&
+      x.area <= filterData.areaTo)
+  }
+  else {
+    return res.filter(x => filterData.rooms.includes(x.rooms) &&
     x.price >= filterData.priceFrom &&
     x.price <= filterData.priceTo &&
     x.area >= filterData.areaFrom &&
     x.area <= filterData.areaTo)
+  }
 }
 
-// изначально кнопка не нажата
-let isButtonActivate = false
 // получение значений после перетаскивания ползунка
 constants.sliderPrice.noUiSlider.on('end', function (values) {
-
   api.getData()
     .then(res => {
-      if(isButtonActivate) {
+      if (isButtonActivate) {
         const filterData = getFilterData()
         return filterResultData(res, filterData)
       }
       else {
         const filterData = getFilterData()
-        return res.filter(x => x.price >= filterData.priceFrom &&
-          x.price <= filterData.priceTo &&
-          x.area >= filterData.areaFrom &&
-          x.area <= filterData.areaTo)
+        return filterResultData(res, filterData)
       }
 
     })
     .then(res => {
       // рендерим первые 5 элементов
-      // redrawApartments(res.slice(0, 5))
-      redrawApartments(res)
+      redrawApartments(res.slice(0, 5))
+      // redrawApartments(res)
 
       // но имеем возможность отобразить остальные по кнопке
-      if (res.length > 5) {
-        constants.btnResultLoad.classList.remove('result__load_disabled')
-      }
-      // refreshLoadMoreButton(res);
+      // if (res.length > 5) {
+      //   constants.btnResultLoad.classList.remove('result__load_disabled')
+      // }
+      refreshLoadMoreButton(res);
     })
 
 })
 constants.sliderArea.noUiSlider.on('end', function (values) {
   api.getData()
     .then(res => {
-      if(isButtonActivate) {
+      if (isButtonActivate) {
         const filterData = getFilterData()
         return filterResultData(res, filterData)
       }
       else {
         const filterData = getFilterData()
-        return res.filter(x => x.price >= filterData.priceFrom &&
-          x.price <= filterData.priceTo &&
-          x.area >= filterData.areaFrom &&
-          x.area <= filterData.areaTo)
+        return filterResultData(res, filterData)
       }
     })
     .then(res => {
       // рендерим первые 5 элементов
-      // redrawApartments(res.slice(0, 5))
-      redrawApartments(res)
+      redrawApartments(res.slice(0, 5))
+      // redrawApartments(res)
 
       // но имеем возможность отобразить остальные по кнопке
-      if (res.length > 5) {
-        constants.btnResultLoad.classList.remove('result__load_disabled')
-      }
+      // if (res.length > 5) {
+      //   constants.btnResultLoad.classList.remove('result__load_disabled')
+      // }
       // refreshLoadMoreButton(res);
     })
 
@@ -107,7 +110,7 @@ constants.sliderArea.noUiSlider.on('end', function (values) {
 const refreshLoadMoreButton = (arr, curr = 5) => {
   // 5 <
   const displayedApartmentsCount = document.querySelectorAll('.apartment-row').length
-  console.log(arr)
+  // console.log(displayedApartmentsCount)
   if (curr < arr.length) {
     // btnResultLoad.classList.add('result__load_disabled')
     constants.btnResultLoad.classList.remove('result__load_disabled')
@@ -161,7 +164,7 @@ const getDataApartments = (from, count) => {
       addApartment(createApartment(item))
     })
     const displayedApartmentsCount = document.querySelectorAll('.apartment-row').length
-    refreshLoadMoreButton(res, displayedApartmentsCount)
+    // refreshLoadMoreButton(res, displayedApartmentsCount)
   })
 }
 
@@ -200,6 +203,7 @@ const createApartment = (item) => {
 constants.btnResultLoad.addEventListener('click', () => {
   const displayedApartmentsCount = document.querySelectorAll('.apartment-row').length
 
+  // getDataApartments(displayedApartmentsCount, displayedApartmentsCount + 20)
   getDataApartments(displayedApartmentsCount, displayedApartmentsCount + 20)
 
 })
@@ -219,7 +223,7 @@ const redrawApartments = (data) => {
   data.forEach((item) => {
     addApartment(createApartment(item))
   })
-  // refreshLoadMoreButton(data)
+  refreshLoadMoreButton(data)
 }
 
 
@@ -239,6 +243,7 @@ const getFilterData = () => {
   }
 }
 
+
 constants.buttonsRoom.forEach(item => {
   item.addEventListener('click', () => {
     // cons/ole.log(item.dataset.rooms)
@@ -251,20 +256,21 @@ constants.buttonsRoom.forEach(item => {
       item.classList.add('filter__room-button_active')
       isButtonActivate = true
     }
-
+    let filteredLength = 0
     api.getData()
       .then(res => {
         console.log('data from server: ', res)
         const filterData = getFilterData()
         const filtered = filterResultData(res, filterData)
         console.log(filtered)
+        filteredLength = filtered.length
         return filtered
-        })
-        .then(res => {
-          // рендерим первые 5 элементов
-          // redrawApartments(res.slice(0, 5))
-          redrawApartments(res)
-        })
+      })
+      .then(res => {
+        // рендерим первые 5 элементов
+        redrawApartments(res.slice(0, 5))
+        refreshLoadMoreButton(res, res.length)
+      })
 
   })
 
