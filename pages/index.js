@@ -42,13 +42,25 @@ const filterResultData = (res, filterData) => {
     x.area <= filterData.areaTo)
 }
 
-
+// изначально кнопка не нажата
+let isButtonActivate = false
 // получение значений после перетаскивания ползунка
 constants.sliderPrice.noUiSlider.on('end', function (values) {
+
   api.getData()
     .then(res => {
-      const filterData = getFilterData()
-      return filterResultData(res, filterData)
+      if(isButtonActivate) {
+        const filterData = getFilterData()
+        return filterResultData(res, filterData)
+      }
+      else {
+        const filterData = getFilterData()
+        return res.filter(x => x.price >= filterData.priceFrom &&
+          x.price <= filterData.priceTo &&
+          x.area >= filterData.areaFrom &&
+          x.area <= filterData.areaTo)
+      }
+
     })
     .then(res => {
       // рендерим первые 5 элементов
@@ -66,8 +78,17 @@ constants.sliderPrice.noUiSlider.on('end', function (values) {
 constants.sliderArea.noUiSlider.on('end', function (values) {
   api.getData()
     .then(res => {
-      const filterData = getFilterData()
-      return filterResultData(res, filterData)
+      if(isButtonActivate) {
+        const filterData = getFilterData()
+        return filterResultData(res, filterData)
+      }
+      else {
+        const filterData = getFilterData()
+        return res.filter(x => x.price >= filterData.priceFrom &&
+          x.price <= filterData.priceTo &&
+          x.area >= filterData.areaFrom &&
+          x.area <= filterData.areaTo)
+      }
     })
     .then(res => {
       // рендерим первые 5 элементов
@@ -222,10 +243,15 @@ constants.buttonsRoom.forEach(item => {
   item.addEventListener('click', () => {
     // cons/ole.log(item.dataset.rooms)
 
-    if (item.classList.contains('filter__room-button_active'))
+    if (item.classList.contains('filter__room-button_active')) {
+      isButtonActivate = false
       item.classList.remove('filter__room-button_active')
-    else
+    }
+    else {
       item.classList.add('filter__room-button_active')
+      isButtonActivate = true
+    }
+
     api.getData()
       .then(res => {
         console.log('data from server: ', res)
