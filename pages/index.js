@@ -37,7 +37,7 @@ createSlider(constants.sliderArea, 57, 97, 33, 123)
 updateTextSlider(constants.sliderPrice, constants.priceFrom, constants.priceTo)
 updateTextSlider(constants.sliderArea, constants.areaFrom, constants.areaTo)
 
-
+// универсальная функция фильтрации данных
 const filterResultData = (res, filterData) => {
   if(filterData.rooms.length === 0) {
     return res.filter(x => x.price >= filterData.priceFrom &&
@@ -58,25 +58,13 @@ const filterResultData = (res, filterData) => {
 constants.sliderPrice.noUiSlider.on('end', function (values) {
   api.getData()
     .then(res => {
-      if (isButtonActivate) {
-        const filterData = getFilterData()
-        return filterResultData(res, filterData)
-      }
-      else {
-        const filterData = getFilterData()
-        return filterResultData(res, filterData)
-      }
+      const filterData = getFilterData()
+      return filterResultData(res, filterData)
 
     })
     .then(res => {
       // рендерим первые 5 элементов
       redrawApartments(res.slice(0, 5))
-      // redrawApartments(res)
-
-      // но имеем возможность отобразить остальные по кнопке
-      // if (res.length > 5) {
-      //   constants.btnResultLoad.classList.remove('result__load_disabled')
-      // }
       refreshLoadMoreButton(res);
     })
 
@@ -84,46 +72,19 @@ constants.sliderPrice.noUiSlider.on('end', function (values) {
 constants.sliderArea.noUiSlider.on('end', function (values) {
   api.getData()
     .then(res => {
-      if (isButtonActivate) {
-        const filterData = getFilterData()
-        return filterResultData(res, filterData)
-      }
-      else {
-        const filterData = getFilterData()
-        return filterResultData(res, filterData)
-      }
+      const filterData = getFilterData()
+      return filterResultData(res, filterData)
     })
     .then(res => {
       // рендерим первые 5 элементов
       redrawApartments(res.slice(0, 5))
-      // redrawApartments(res)
-
-      // но имеем возможность отобразить остальные по кнопке
-      // if (res.length > 5) {
-      //   constants.btnResultLoad.classList.remove('result__load_disabled')
-      // }
-      // refreshLoadMoreButton(res);
     })
-
 })
 
-const refreshLoadMoreButton = (arr, curr = 5) => {
-  // 5 <
+const refreshLoadMoreButton = (arr) => {
+  // получение количества карточек, которые выведены
   const displayedApartmentsCount = document.querySelectorAll('.apartment-row').length
-  // console.log(displayedApartmentsCount)
-  if (curr < arr.length) {
-    // btnResultLoad.classList.add('result__load_disabled')
-    constants.btnResultLoad.classList.remove('result__load_disabled')
-  }
-  else {
-    constants.btnResultLoad.classList.add('result__load_disabled')
-
-    // btnResultLoad.classList.remove('result__load_disabled')
-  }
-}
-
-const getFirstData = (data, from, to) => {
-  return data.slice(from, to)
+  return arr.slice(displayedApartmentsCount, 20)
 }
 
 /**
@@ -132,39 +93,50 @@ const getFirstData = (data, from, to) => {
  * @returns Отфильтрованный набор данных
  */
 const filterDataSet = (dataSet) => {
-  let filteredData = []
-  if (getFilterData) {
-    const filterSettings = getFilterData()
-    console.log('filterSettings.rooms: ' + filterSettings.rooms)
+  // получение установленных значений
+  const filterSettings = getFilterData()
 
-    // filteredData = dataSet.filter(x => filterSettings.rooms.includes(x.rooms))
-    filteredData = dataSet.filter(x => filterSettings.rooms.includes(x.rooms))
-    console.log('filteredData: ' + filteredData)
-  }
+  // содержит ли массив активных кнопок значение из массива данных
+  // dataset - результат, пришедший с сервера
+  return filterResultData(dataSet, filterSettings)
+}
 
-  return filteredData
+// для загрузки стартовых элементов
+const getFirstDataApartments = (from, count) => {
+    // Шлём запрос
+    api.getData().then(res => {
+      res.slice(from, count).forEach(item => {
+        addApartment(createApartment(item))
+      })
+    })
+
 }
 
 /**
  * Дозагружает данные
  */
 const getDataApartments = (from, count) => {
-  // 1. Шлём запрос
-  api.getData().then(res => {
 
-    // 2. Фильтруем результаты
+  api.getData().then(res => {
+    console.log(res)
+
 
     const filteredData = filterDataSet(res);
-    // 3. Обрезаем результаты. Берём начиная с from элементов count
-    // const arr = res.splice(from, count)
-
-    // slice
-    const arr = getFirstData(res, from, count)
-    arr.forEach(item => {
+    console.log('filteredData: ' + JSON.stringify(filteredData))
+    // Обрезаем результаты. Берем начиная с from элементов count
+    filteredData.slice(from, count).forEach(item => {
       addApartment(createApartment(item))
     })
+
     const displayedApartmentsCount = document.querySelectorAll('.apartment-row').length
-    // refreshLoadMoreButton(res, displayedApartmentsCount)
+    // if(displayedApartmentsCount < filteredData.length) {
+    //   constants.btnResultLoad.classList.remove('result__load_disabled')
+    // }
+    // else {
+    //   constants.btnResultLoad.classList.add('result__load_disabled')
+    // }
+
+
   })
 }
 
@@ -203,8 +175,10 @@ const createApartment = (item) => {
 constants.btnResultLoad.addEventListener('click', () => {
   const displayedApartmentsCount = document.querySelectorAll('.apartment-row').length
 
-  // getDataApartments(displayedApartmentsCount, displayedApartmentsCount + 20)
-  getDataApartments(displayedApartmentsCount, displayedApartmentsCount + 20)
+  // todo условие для смены состояния фильтра (от этого меняется функция загрузка стартовых данных, либо фильтрованных)
+  getDataApartments(displayedApartmentsCount, 20)
+
+  // getFirstDataApartments(displayedApartmentsCount, 20)
 
 })
 
@@ -235,7 +209,6 @@ const getFilterData = () => {
 
   return {
     rooms: [...document.querySelectorAll('.filter__room-button_active')].map(item => Number(item.dataset.rooms)),
-    // rooms: [...document.querySelectorAll('.filter__room-button')].map(item => Number(item.dataset.rooms)),
     priceFrom: priceRange[0],
     priceTo: priceRange[1],
     areaFrom: areaRange[0],
@@ -246,8 +219,6 @@ const getFilterData = () => {
 
 constants.buttonsRoom.forEach(item => {
   item.addEventListener('click', () => {
-    // cons/ole.log(item.dataset.rooms)
-
     if (item.classList.contains('filter__room-button_active')) {
       isButtonActivate = false
       item.classList.remove('filter__room-button_active')
@@ -262,14 +233,14 @@ constants.buttonsRoom.forEach(item => {
         console.log('data from server: ', res)
         const filterData = getFilterData()
         const filtered = filterResultData(res, filterData)
-        console.log(filtered)
+        // console.log(filtered)
         filteredLength = filtered.length
         return filtered
       })
       .then(res => {
         // рендерим первые 5 элементов
         redrawApartments(res.slice(0, 5))
-        refreshLoadMoreButton(res, res.length)
+        refreshLoadMoreButton(res)
       })
 
   })
