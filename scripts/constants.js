@@ -13,3 +13,7 @@ export const priceTo = document.querySelector('.apartment-row__price-to')
 export const areaFrom = document.querySelector('.apartment-row__area-from')
 export const areaTo = document.querySelector('.apartment-row__area-to')
 export const resetButton = document.querySelector('.reset__button')
+
+export const sortPrice = document.querySelector('#sort-price')
+export const sortArea = document.querySelector('#sort-area')
+export const sortFloor = document.querySelector('#sort-floor')

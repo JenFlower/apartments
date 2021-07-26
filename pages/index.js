@@ -152,7 +152,7 @@ const createApartment = (item) => {
   // console.log(apartmentArea.textContent)
   // floors
   const apartmentCurrentFloor = apartment.querySelector('.apartment-row__current-floor');
-  apartmentCurrentFloor.textContent = item.id;
+  apartmentCurrentFloor.textContent = item.floor;
   const apartmentTotalFloor = apartment.querySelector('.apartment-row__total-floor');
   apartmentTotalFloor.textContent = item.floors;
   // price
@@ -245,4 +245,151 @@ constants.resetButton.addEventListener('click', () => {
     .then(res => {
       getDataApartments(res)
     })
+})
+
+
+
+
+let isSortingAscending = false
+constants.sortPrice.addEventListener('click',() => {
+
+  if(!isSortingAscending) {
+    isSortingAscending = true
+    api.getData()
+    .then(res => {
+      console.log('data from server: ', res)
+      const filterData = getFilterData()
+      const filtered = filterResultData(res, filterData)
+      // filtered
+      return filtered
+    })
+    .then(res => {
+      return res.sort(function(obj1, obj2) {
+        // Сортировка по возрастанию
+        return obj1.price-obj2.price;
+      })
+    })
+    .then(res => {
+      // console.log(res)
+      redrawApartments(res.slice(0, 5))
+      // refreshLoadMoreButton(res)
+    })
+  }
+  else {
+    isSortingAscending = false
+    api.getData()
+    .then(res => {
+      console.log('data from server: ', res)
+      const filterData = getFilterData()
+      const filtered = filterResultData(res, filterData)
+      // filtered
+      return filtered
+    })
+    .then(res => {
+
+      return res.sort(function(obj1, obj2) {
+        // Сортировка по возрастанию
+        return obj2.price-obj1.price;
+      })
+    })
+    .then(res => {
+      // console.log(res)
+      redrawApartments(res.slice(0, 5))
+      // refreshLoadMoreButton(res)
+    })
+  }
+})
+constants.sortArea.addEventListener('click',() => {
+  if(!isSortingAscending) {
+    isSortingAscending = true
+    api.getData()
+    .then(res => {
+      console.log('data from server: ', res)
+      const filterData = getFilterData()
+      const filtered = filterResultData(res, filterData)
+      // filtered
+      return filtered
+    })
+    .then(res => {
+      return res.sort(function(obj1, obj2) {
+        // Сортировка по возрастанию
+        return obj1.area-obj2.area;
+      })
+    })
+    .then(res => {
+      // console.log(res)
+      redrawApartments(res.slice(0, 5))
+      refreshLoadMoreButton(res)
+    })
+  }
+  else {
+    isSortingAscending = false
+    api.getData()
+    .then(res => {
+      console.log('data from server: ', res)
+      const filterData = getFilterData()
+      const filtered = filterResultData(res, filterData)
+      // filtered
+      return filtered
+    })
+    .then(res => {
+
+      return res.sort(function(obj1, obj2) {
+        // Сортировка по возрастанию
+        return obj2.area-obj1.area;
+      })
+    })
+    .then(res => {
+      // console.log(res)
+      redrawApartments(res.slice(0, 5))
+      refreshLoadMoreButton(res)
+    })
+  }
+})
+constants.sortFloor.addEventListener('click',() => {
+  if(!isSortingAscending) {
+    isSortingAscending = true
+    api.getData()
+    .then(res => {
+      console.log('data from server: ', res)
+      const filterData = getFilterData()
+      const filtered = filterResultData(res, filterData)
+      // filtered
+      return filtered
+    })
+    .then(res => {
+      return res.sort(function(obj1, obj2) {
+        // Сортировка по возрастанию
+        return obj1.floor-obj2.floor;
+      })
+    })
+    .then(res => {
+      // console.log(res)
+      redrawApartments(res.slice(0, 5))
+      refreshLoadMoreButton(res)
+    })
+  }
+  else {
+    isSortingAscending = false
+    api.getData()
+    .then(res => {
+      console.log('data from server: ', res)
+      const filterData = getFilterData()
+      const filtered = filterResultData(res, filterData)
+      // filtered
+      return filtered
+    })
+    .then(res => {
+
+      return res.sort(function(obj1, obj2) {
+        // Сортировка по возрастанию
+        return obj2.floor-obj1.floor;
+      })
+    })
+    .then(res => {
+      // console.log(res)
+      redrawApartments(res.slice(0, 5))
+      refreshLoadMoreButton(res)
+    })
+  }
 })
