@@ -65,7 +65,7 @@ constants.sliderPrice.noUiSlider.on('end', function (values) {
     .then(res => {
       // рендерим первые 5 элементов
       redrawApartments(res.slice(0, 5))
-      refreshLoadMoreButton(res);
+      refreshLoadMoreButton(res)
     })
 
 })
@@ -78,13 +78,20 @@ constants.sliderArea.noUiSlider.on('end', function (values) {
     .then(res => {
       // рендерим первые 5 элементов
       redrawApartments(res.slice(0, 5))
+      refreshLoadMoreButton(res)
     })
 })
 
 const refreshLoadMoreButton = (arr) => {
   // получение количества карточек, которые выведены
   const displayedApartmentsCount = document.querySelectorAll('.apartment-row').length
-  return arr.slice(displayedApartmentsCount, 20)
+
+  if(Number(displayedApartmentsCount) < arr.length) {
+    constants.btnResultLoad.classList.remove('result__load_disabled')
+  }
+  else {
+    constants.btnResultLoad.classList.add('result__load_disabled')
+  }
 }
 
 /**
@@ -101,42 +108,25 @@ const filterDataSet = (dataSet) => {
   return filterResultData(dataSet, filterSettings)
 }
 
-// для загрузки стартовых элементов
-const getFirstDataApartments = (from, count) => {
-    // Шлём запрос
-    api.getData().then(res => {
-      res.slice(from, count).forEach(item => {
-        addApartment(createApartment(item))
-      })
-    })
-
-}
-
 /**
- * Дозагружает данные
+ * Загружает данные
  */
 const getDataApartments = (from, count) => {
 
   api.getData().then(res => {
-    console.log(res)
-
-
     const filteredData = filterDataSet(res);
+
     console.log('filteredData: ' + JSON.stringify(filteredData))
+
     // Обрезаем результаты. Берем начиная с from элементов count
     filteredData.slice(from, count).forEach(item => {
       addApartment(createApartment(item))
     })
 
-    const displayedApartmentsCount = document.querySelectorAll('.apartment-row').length
-    // if(displayedApartmentsCount < filteredData.length) {
-    //   constants.btnResultLoad.classList.remove('result__load_disabled')
-    // }
-    // else {
-    //   constants.btnResultLoad.classList.add('result__load_disabled')
-    // }
-
-
+    const displayedApartmentsCount = constants.apartmentContent.querySelectorAll('.apartment-row').length
+    console.log('filteredData.length: ' + filteredData.length)
+    console.log('displayedApartmentsCount: ' + Number(displayedApartmentsCount))
+    refreshLoadMoreButton(filteredData)
   })
 }
 
@@ -174,12 +164,7 @@ const createApartment = (item) => {
 // обработчик кнопки "Загрузить еще"
 constants.btnResultLoad.addEventListener('click', () => {
   const displayedApartmentsCount = document.querySelectorAll('.apartment-row').length
-
-  // todo условие для смены состояния фильтра (от этого меняется функция загрузка стартовых данных, либо фильтрованных)
   getDataApartments(displayedApartmentsCount, 20)
-
-  // getFirstDataApartments(displayedApartmentsCount, 20)
-
 })
 
 // прокрутка страницы
@@ -233,7 +218,6 @@ constants.buttonsRoom.forEach(item => {
         console.log('data from server: ', res)
         const filterData = getFilterData()
         const filtered = filterResultData(res, filterData)
-        // console.log(filtered)
         filteredLength = filtered.length
         return filtered
       })
@@ -242,7 +226,23 @@ constants.buttonsRoom.forEach(item => {
         redrawApartments(res.slice(0, 5))
         refreshLoadMoreButton(res)
       })
+  })
+})
 
+// кнопка "Сбросить параметры"
+constants.resetButton.addEventListener('click', () => {
+  constants.buttonsRoom.forEach(item => {
+    isButtonActivate = false
+    item.classList.remove('filter__room-button_active')
   })
 
+  constants.sliderPrice.noUiSlider.set([9_000_000, 15_000_000])
+  constants.sliderArea.noUiSlider.set([57, 97])
+
+  constants.apartmentContent.innerHTML = ''
+
+  api.getData()
+    .then(res => {
+      getDataApartments(res)
+    })
 })
