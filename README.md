@@ -1,4 +1,4 @@
-# apartments
+# Apartments
 ## Функционал:
 * Адаптивная верстка HTML, CSS, JS по методологии БЭМ
 * API
